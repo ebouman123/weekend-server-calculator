@@ -24,19 +24,19 @@ app.post('/calculations', (req, res) => {
   let numbersInput = req.body
   console.log('req.body', req.body)
   let evaluateAnswer = evaluate(req.body)
-  console.log(calculations)
-  console.log('evaluate() was called')
+  console.log('Current calculations array:',calculations)
+  // console.log('evaluate() was called')
   res.sendStatus(201)
 })
 
 // function to calculate the answer based on the operator sent
 let evaluate = (calcObject) => {
   let numOne = calcObject.numOne
-  console.log('numOne',numOne)
+  // console.log('numOne',numOne)
   let numTwo = calcObject.numTwo
-  console.log('numTwo', numTwo)
+  // console.log('numTwo', numTwo)
   let operator = calcObject.operator
-  console.log('operator', operator)
+  // console.log('operator', operator)
   let result = 0
   let answer = {
     numOne: numOne,
@@ -45,16 +45,13 @@ let evaluate = (calcObject) => {
     result: result
   }
 
-  console.log('test')
   // Check the operator and execute the appropriate calculation
     // Add the result to the answer object
       // Push the object into the calculations array
   if (operator === '+'){
     result = Number(numOne) + Number(numTwo)
-    console.log(result)
     answer.result = result
     calculations.push(answer)
-    console.log(answer)
   }else if (operator === '-'){
     result = numOne - numTwo
     answer.result = result
