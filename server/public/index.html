@@ -17,14 +17,14 @@
       <button onClick="getOperator(event)">/</button>
       <input data-testid="numTwo" id="numTwo" placeholder="Second Number">
       <button onclick="postCalc(event)">=</button>
-      <button>C</button>
+      <button type="button" onclick="clearInputs()">C</button>
     </form>
 
-    <section data-testid="recentResult">
+    <section data-testid="recentResult" id="recentResult">
       <!-- The most recent calculation result goes here. -->
     </section>
 
-    <section data-testid="resultHistory">
+    <section data-testid="resultHistory" id="resultHistory">
       <!-- The list of calculation results goes here. -->
     </section>
   </body>
