@@ -21,14 +21,12 @@ This project was focused on creating a calculator that makes and stores calculat
 3. Open the browser and visit the url localhost:5001
 
 ## Usage
-How does someone use this application? Tell a user story here.
 
 1. Enter a number into the 'First Number' input
 2. Click an operator
 3. Enter a number into the 'Second Number' input
 4. Press the '=' button to evaluate the equation
 5. Press 'C' to clear the inputs
-
 
 ## Built With
 
