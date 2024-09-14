@@ -3,22 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title>Server-Side Calculator</title>    
+    <link rel="stylesheet" href="styles/styles.css"/>
     <script defer src="scripts/axios.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
   </head>
   <body>
     <h1>Server-Side Calculator</h1>
-
+    <div id="outsideContainer">
     <form data-testid="calculator">
-      <input data-testid="numOne" id="numOne" placeholder="First Number">
-      <button onClick="getOperator(event)">+</button>
-      <button onClick="getOperator(event)">-</button>
-      <button onClick="getOperator(event)">*</button>
-      <button onClick="getOperator(event)">/</button>
-      <input data-testid="numTwo" id="numTwo" placeholder="Second Number">
-      <button onclick="postCalc(event)">=</button>
-      <button type="button" onclick="clearInputs()">C</button>
+      <div id="numOneDiv">
+        <input data-testid="numOne" id="numOne" placeholder="First Number">
+      </div>
+      <div id="operatorDiv">
+        <button onClick="getOperator(event)">+</button>
+        <button onClick="getOperator(event)">-</button>
+        <button onClick="getOperator(event)">*</button>
+        <button onClick="getOperator(event)">/</button>  
+      </div>          
+      <div id="numTwoDiv">
+        <input data-testid="numTwo" id="numTwo" placeholder="Second Number">
+      </div>
+      <div>
+        <button onclick="postCalc(event)">=</button>
+        <button type="button" onclick="clearInputs()">C</button>
+      </div>
     </form>
+    <!-- <button onClick="clearHistory()">Clear History</button> -->
 
     <section data-testid="recentResult" id="recentResult">
       <!-- The most recent calculation result goes here. -->
@@ -27,5 +37,6 @@
     <section data-testid="resultHistory" id="resultHistory">
       <!-- The list of calculation results goes here. -->
     </section>
+  </div>
   </body>
 </html>

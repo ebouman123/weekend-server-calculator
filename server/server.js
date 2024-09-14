@@ -6,30 +6,31 @@ app.use(express.json());
 app.use(express.static('server/public'));
 app.use(express.urlencoded({extended:true}))
 
-// Global variable that will contain all of the
-// calculation objects:
+// Global variable that will contain all of the calculation objects
 let calculations = []
 
 
-// Here's a wonderful place to make some routes:
-
 // GET: Send the calculations array to the client
 app.get('/calculations', (req, res) => {
-  console.log('GET calculations was run')
+  // console.log('GET calculations was run')
   res.send(calculations)
 })
+
 // POST: Take the inputs from the client and run them through the evaluate function
   // evaluate() will add the answer to the calculations array
 app.post('/calculations', (req, res) => {
   let numbersInput = req.body
-  console.log('req.body', req.body)
+  // console.log('req.body', req.body)
   let evaluateAnswer = evaluate(req.body)
-  console.log('Current calculations array:',calculations)
+  // console.log('Current calculations array:',calculations)
   // console.log('evaluate() was called')
   res.sendStatus(201)
 })
 
-// function to calculate the answer based on the operator sent
+/**
+ * Function to calculate the answer based on the operator sent
+ * Takes in the data that the client POSTed
+ */
 let evaluate = (calcObject) => {
   let numOne = calcObject.numOne
   // console.log('numOne',numOne)
@@ -38,41 +39,46 @@ let evaluate = (calcObject) => {
   let operator = calcObject.operator
   // console.log('operator', operator)
   let result = 0
+  //* Declare an object for the data to be stored in
   let answer = {
     numOne: numOne,
     numTwo: numTwo,
     operator: operator,
     result: result
   }
-
-  // Check the operator and execute the appropriate calculation
-    // Add the result to the answer object
-      // Push the object into the calculations array
-  if (operator === '+'){
-    result = Number(numOne) + Number(numTwo)
-    answer.result = result
-    calculations.push(answer)
-  }else if (operator === '-'){
-    result = numOne - numTwo
-    answer.result = result
-    calculations.push(answer)
-  }else if (operator === '/'){
-    result = numOne / numTwo
-    answer.result = result
-    calculations.push(answer)
-  }else if (operator === '*'){
-    result = numOne * numTwo
-    answer.result = result
-    calculations.push(answer)
-  }else{
-    console.log('this shit broke')
+  //* Check the operator and execute the appropriate calculation
+    //* Add the result to the answer object (answer.result)
+      //* Push the object into the calculations array which the client will GET
+  switch(operator){
+    case '+':
+      answer.result = Number(numOne) + Number(numTwo);
+      calculations.push(answer);
+      break;
+    case '-':
+      answer.result = numOne - numTwo;
+      calculations.push(answer);
+      break;
+    case '/':
+      answer.result = numOne / numTwo;
+      calculations.push(answer);
+      break;
+    case '*':
+      answer.result = numOne * numTwo;
+      calculations.push(answer);
+      break;
+    default: break;
   }
-
 }
 
 
 
 
+
+
+// DELETE: Deletes the data in the calculations array
+// app.delete('/calculations', (req, res) => {
+//   res.send('Delete request called')
+// })
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
