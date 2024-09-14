@@ -6,7 +6,7 @@ This project was focused on creating a calculator that makes and stores calculat
 
 ## Screen Shot
 
-![Screenshot of calculator](images/finishedProduct.png)
+![Screenshot of calculator](images/readmeScreenshot.png)
 
 ### Prerequisites
 
